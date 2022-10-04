@@ -1,4 +1,4 @@
-package com.example;
+package com.example.demo;
 
 import java.util.List;
 
@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Charger;
-import com.example.demo.ChargerService;
-
 @RestController
-@RequestMapping("api/getChargerInfo")
+@RequestMapping(value = "api/getChargerInfo",
+produces = "application/json;charset=UTF-8")
 public class ChargerController {
     ChargerService chargerService;
 

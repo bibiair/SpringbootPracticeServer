@@ -12,7 +12,6 @@ public class ChargerConfig {
 
     @Autowired
     public ChargerConfig (RestClient restClient,ChargerRepository chargerRepository){
-        System.out.println("RestClient initialized");
         this.restClient = restClient;
         this.chargerRepository = chargerRepository;
     }
@@ -22,7 +21,9 @@ public class ChargerConfig {
         return args -> {
             String url = "http://apis.data.go.kr/B552584/EvCharger/getChargerInfo?serviceKey=3cxl%2B%2BbgVeK8a73TWUWSbI1L8BkjmuZt%2Bpy460NP%2F1zFm12OaJmyTuctV8G6ISgiOfxw9Wg9uhjqvYfpkuSgOQ%3D%3D&numOfRows=20&pageNo=1&dataType=XML";
             restClient.getChargerInfo(url, "");
-            chargerRepository.saveAll(restClient.chargerList);
+            if (restClient.chargerList != null){
+                chargerRepository.saveAll(restClient.chargerList);
+            }
 
         };
     }

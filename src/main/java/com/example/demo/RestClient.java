@@ -47,6 +47,7 @@ public class RestClient {
         System.out.println(response_str);
         if (response_str.contains("SERVICE ERROR")){
             getChargerInfo(url,plainCreds);
+            return;
         }
         else{
             JSONParser jsonParser = new JSONParser();
