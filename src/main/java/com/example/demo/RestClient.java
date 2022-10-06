@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,17 +37,17 @@ public class RestClient {
         
     }
 
-    public void getChargerInfo(String url, String plainCreds) throws ParseException, JsonMappingException, JsonProcessingException{
+    public void getChargerInfo(URI uri, String plainCreds) throws ParseException, JsonMappingException, JsonProcessingException{
+        String response_str = restTemplate.getForObject(uri, String.class);
+        // HttpHeaders headers = new HttpHeaders();
+        // // headers.setContentType(MediaType.APPLICATION_XML);
+        // HttpEntity<String> request = new HttpEntity<String>(headers);
+        // ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
         
-        HttpHeaders headers = new HttpHeaders();
-        // headers.setContentType(MediaType.APPLICATION_XML);
-        HttpEntity<String> request = new HttpEntity<String>(headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
-        
-        String response_str = response.getBody();
+        // String response_str = response.getBody();
         System.out.println(response_str);
         if (response_str.contains("SERVICE ERROR")){
-            getChargerInfo(url,plainCreds);
+            // getChargerInfo(url,plainCreds);
             return;
         }
         else{

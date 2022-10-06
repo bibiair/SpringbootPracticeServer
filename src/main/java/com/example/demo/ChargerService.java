@@ -16,4 +16,7 @@ public class ChargerService {
     public List<Charger> getChargers(){
         return chargerRepository.findAll();
     }
+    public void addChargers(Charger charger){
+        chargerRepository.save(charger);
+    }
 }
